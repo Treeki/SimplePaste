@@ -184,9 +184,10 @@ def add_nick(tokens, nick):
 	r,g,b = calc_colour(nick)
 	tokens.append('<span class=\'i_n\' style=\'color:#%02x%02x%02x\'>%s</span>' % (r,g,b, nick))
 
-_speech_regex = re.compile(r'^\[(..:..:..)\] <([^>]+)> (.+)$')
-_notice_regex = re.compile(r'^\[(..:..:..)\] \*\*\* (.+)$')
-_action_regex = re.compile(r'^\[(..:..:..)\] \* ([^ ]+) (.+)$')
+_re_head = r'^([^[]*\[..:..:..\]) '
+_speech_regex = re.compile(_re_head + r'<([^>]+)> (.+)$')
+_notice_regex = re.compile(_re_head + r'\*\*\* (.+)$')
+_action_regex = re.compile(_re_head + r'\* ([^ ]+) (.+)$')
 
 def proc_line(tokens, line):
 	m = _speech_regex.match(line)
@@ -221,6 +222,10 @@ def proc_line(tokens, line):
 		tokens.append(' ')
 		add_tokens(tokens, text)
 		tokens.append('</div>')
+		return
+
+	if line == '--':
+		tokens.append('<div class=\'i_a\'>----</div>')
 		return
 
 	stripped_line = line.strip()

@@ -34,7 +34,7 @@ IN_FILE = sys.argv[2]
 
 configuration = {
 		'in_lang': LANG,
-		'linenos': 'inline',
+		'linenos': 'table',
 		}
 
 def generate_token():

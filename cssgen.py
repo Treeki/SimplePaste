@@ -21,7 +21,7 @@ pygments_css = formatter.get_style_defs()
 
 full_css = '''
 body {{ background: #000; line-height: 110%; }}
-pre {{
+.irclog, pre {{
 	padding: 0.5em;
 	font-family: "Consolas", "DejaVu Sans Mono", monospace;
 	font-size: 12px;
@@ -30,6 +30,7 @@ pre {{
 	white-space: pre-wrap;
 }}
 .lineno {{ color: #999; padding-right: 10px; }}
+.linenodiv {{ color: #bbb; padding-right: 8px; }}
 
 {pygments_css}
 
@@ -37,8 +38,8 @@ pre {{
 	margin: 4px;
 }}
 div>span:first-child {{ color: #999; }}
-div>span:first-child:before {{ content: '['; }}
-div>span:first-child:after {{ content: ']'; }}
+/*div>span:first-child:before {{ content: '['; }}
+div>span:first-child:after {{ content: ']'; }}*/
 .i_n {{ font-weight: bold; }}
 .i_s>.i_n:before {{ content: '<'; }}
 .i_s>.i_n:after {{ content: '>'; }}
